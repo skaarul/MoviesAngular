@@ -9,8 +9,9 @@ import { newpr } from 'src/app/shared/movie.model';
   styleUrls: ['./actor-producer.component.css']
 })
 export class ActorProducerComponent implements OnInit {
-  constructor(private service:MovieService) { }
-
+  constructor(private service: MovieService) { }
+  
+  
   ngOnInit() {
     this.resetForm();
   }
@@ -27,7 +28,26 @@ export class ActorProducerComponent implements OnInit {
     }
   }
   onSubmit(form: NgForm) {
-    this.service.SaveNewActorProducer(form.value).subscribe(res => { this.RefreshList(form) });;
+    if (form.value.rectype == "producer") {
+      this.service.producer = {
+        ProducerName: form.value.UserName,
+        Gender: form.value.Gender,
+        Bio: form.value.Bio,
+        ProducerId: null,
+        DOB: null
+      }
+      this.service.SaveNewProducer().subscribe(res => { this.RefreshList(form) });
+    }
+    else {
+      this.service.actorinfo = {
+        ActorName: form.value.UserName,
+        Gender: form.value.Gender,
+        Bio: form.value.Bio,
+        ActorId: null,
+        DOB: null
+      }
+      this.service.SaveNewActor().subscribe(res => { this.RefreshList(form) });
+    }
   }
   RefreshList(form: NgForm) {
     this.resetForm(form);

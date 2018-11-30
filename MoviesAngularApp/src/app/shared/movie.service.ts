@@ -46,26 +46,10 @@ export class MovieService {
   hidemovieslist() {
     this.showlist = false;
   }
-  SaveNewActorProducer(formnewdata: FormData) {
-    if (formnewdata.rectype == "producer") {
-      this.producer = {
-        ProducerName: formnewdata.UserName,
-        Gender: formnewdata.Gender,
-        Bio: formnewdata.Bio,
-        ProducerId: null,
-        DOB: null
-      }
-      return this.http.post(this.rootUrl + '/Producer', this.producer);
-    }
-    else {
-      this.actorinfo = {
-        ActorName: formnewdata.UserName,
-        Gender: formnewdata.Gender,
-        Bio: formnewdata.Bio,
-        ActorId: null,
-        DOB: null
-      }
-      return this.http.post(this.rootUrl + '/Actor', this.actorinfo);
-    }
+  SaveNewActor() {
+    return this.http.post(this.rootUrl + '/Actor', this.actorinfo);
+  }
+  SaveNewProducer() {
+    return this.http.post(this.rootUrl + '/Producer', this.producer);
   }
 }
