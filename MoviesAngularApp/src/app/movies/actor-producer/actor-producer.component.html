@@ -1,0 +1,39 @@
+<h4>Add new Producer/Actor</h4>
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" name="UserName" #UserName="ngModel" [ngModel]="service.formnewdata.UserName" class="form-control" required />
+    <div *ngIf="UserName.invalid && UserName.touched" class="validation-error">
+      Name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Bio information</label>
+    <input type="text" name="Bio" #Bio="ngModel" [ngModel]="service.formnewdata.Bio" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Gender</label>
+    <div class="form-control">
+      <label class="radio-inline">
+        <input type="radio" value="1" [ngModel]="service.formnewdata.Gender"  name="Gender"  /> Male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" value="0" [ngModel]="service.formnewdata.Gender"  name="Gender" /> Female
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Type</label>
+    <div class="form-control">
+      <label class="radio-inline">
+        <input type="radio" value="actor" #rectype="ngModel" [ngModel]="service.recordtype" name="rectype" /> Actor
+      </label>
+      <label class="radio-inline">
+        <input type="radio" value="producer" #rectype="ngModel" [ngModel]="service.recordtype" name="rectype" /> Producer
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="submit" [disabled]="form.invalid" value="Save" class="btn btn-lg btn-info" />
+  </div>
+</form>

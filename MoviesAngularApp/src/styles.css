@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.validation-error {
+  color: red;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.btn-info.disabled, .btn-info:disabled {
+  color: #fff;
+  background-color: #ddd;
+  border-color: #ddd;
+  opacity: 1;
+}

@@ -1,0 +1,15 @@
+<div class="jumbtron" >
+  <div class="row">
+    <div *ngIf="service.showlist==true" class="col-md-12">
+      <app-movie-list>
+      </app-movie-list>
+    </div>
+    <div *ngIf="service.showlist==false" class="col-md-6">
+      <app-movie>
+      </app-movie>
+    </div>
+    <div *ngIf="service.showlist==false" class="col-md-6">
+      <app-actor-producer></app-actor-producer>
+    </div>
+  </div>
+  </div>

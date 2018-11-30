@@ -1,0 +1,41 @@
+<h4>Add new movie</h4>
+<form name="moiveform" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <div class="form-group">
+    <label>Movie Name</label>
+    <input type="text" name="MovieName" #MovieName="ngModel" [ngModel]="service.formData.MovieName" class="form-control" required />
+    <div *ngIf="MovieName.invalid && MovieName.touched" class="validation-error">
+      First Name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Release year</label>
+    <input type="text" name="ReleaseYear" #ReleaseYear="ngModel" [ngModel]="service.formData.ReleaseYear" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Plot</label>
+    <input type="text" name="Plot" #Plot="ngModel" [ngModel]="service.formData.Plot" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="Actors">Actor</label>
+    <select multiple id="Actors" name="ActorsArray" #ActorsArray="ngModel" [(ngModel)]="service.formData.ActorsArray" class="form-control" required>
+      <option *ngFor="let ac of service.actorlist" [value]="ac.ActorId">{{ac.ActorName}}</option>
+    </select>
+    <div *ngIf="ActorsArray.invalid && ActorsArray.touched" class="validation-error">
+      Actors are required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ProducerId">Producer</label>
+    <select id="lstproducer" name="ProducerId" #ProducerId="ngModel" [(ngModel)]="service.formData.ProducerId" class="form-control" required>
+      <option *ngFor="let pr of service.producerlist" [value]="pr.ProducerId">{{pr.ProducerName}}</option>
+    </select>
+    <div *ngIf="ProducerId.invalid && ProducerId.touched" class="validation-error">
+      Producer is required
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="submit" [disabled]="form.invalid" value="Submit" class="btn btn-lg btn-info" />
+  </div>
+  <input type="hidden" name="MovieId" #MovieId="ngModel" [ngModel]="service.formData.MovieId" class="form-control" />
+</form>
+<input type="button" value="Go to movies" (click)="GotoMovies()" />
