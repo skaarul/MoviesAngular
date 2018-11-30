@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -12,7 +13,7 @@ namespace MoviesAPI
         {
             // Web API configuration and services
 
-            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
+            config.EnableCors(new EnableCorsAttribute(ConfigurationManager.AppSettings["ClientDomain"], headers: "*", methods: "*"));
 
             // Web API routes
             config.MapHttpAttributeRoutes();
