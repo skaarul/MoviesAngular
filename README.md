@@ -6,3 +6,4 @@ Follow the below steps to setup the application
 3)Provide your database connection string in API's web.config
 4)Run the angular app and provide the base domain as a value for the API's web.config key "ClientDomain"
 5)Add movies after adding actors/producers
+6)Please use latest version of chrome for the best view/ Browser compatibility not included as of now. 
